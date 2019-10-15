@@ -1,3 +1,6 @@
+
+#Q : https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram/0
+
 #include "iheaders.h"
 int main(){
     //int a[] = {6,2,5,4,5,1,6};
