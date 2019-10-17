@@ -11,7 +11,7 @@ int main()
         cin >> m >> n;
         for(int i = 0;i < m; ++i) for(int j = 0; j < n; ++j) cin >> arr[i][j];
         int a = 0,b = n-1,c = m-1, d = 0;
-        while((a <= c)&&(d <= b))
+        while(1)
         {
         for(int i = d; i <= b; ++i) cout << arr[a][i] << " "; a++;
         if(a > c) break;
