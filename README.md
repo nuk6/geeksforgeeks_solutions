@@ -5,3 +5,4 @@
 3) [Topological ordering Q](https://www.hackerrank.com/topics/topological-sorting), [Topological ordering S](https://www.youtube.com/watch?v=ddTC4Zovtbc&t=143s)
 4) [Bitmasking](https://www.youtube.com/watch?v=bjucBkxrMBs),[Bitmasking + dp](https://codeforces.com/blog/entry/45223), [Problem](https://www.hackerrank.com/contests/countercode/challenges/subset)
 5) [Number line](https://www.careercup.com/question?id=6229105402970112),[Grid walking](https://www.hackerrank.com/challenges/grid-walking/problem)
+6)[Closest pair of points](https://www.youtube.com/watch?v=0W_m46Q4qMc)
