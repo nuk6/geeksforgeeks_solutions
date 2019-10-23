@@ -4,3 +4,4 @@
 2) [Optimal BST 1](https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24), [Optimal BST 2](https://www.youtube.com/watch?v=PjcBOfqQlNo&t=44s)
 3) [Topological ordering Q](https://www.hackerrank.com/topics/topological-sorting), [Topological ordering S](https://www.youtube.com/watch?v=ddTC4Zovtbc&t=143s)
 4) [Bitmasking](https://www.youtube.com/watch?v=bjucBkxrMBs),[Bitmasking + dp](https://codeforces.com/blog/entry/45223), [Problem](https://www.hackerrank.com/contests/countercode/challenges/subset)
+5) [Number line](https://www.careercup.com/question?id=6229105402970112)
