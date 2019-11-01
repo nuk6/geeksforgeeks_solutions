@@ -1,6 +1,7 @@
 
 // Q: https://leetcode.com/problems/container-with-most-water/submissions/
 
+// Hint : we're increasing/decreasing the index of smaller element as we're sure that doing it for the larger one won't be optimal.
 class Solution {
 public:
     int maxArea(vector<int>& a) {
