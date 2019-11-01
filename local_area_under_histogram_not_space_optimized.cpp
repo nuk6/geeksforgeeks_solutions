@@ -1,5 +1,5 @@
 
-#Q : https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram/0
+//Q : https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram/0
 
 #include "iheaders.h"
 int main(){
