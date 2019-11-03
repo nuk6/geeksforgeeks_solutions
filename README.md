@@ -7,3 +7,4 @@
 5) [Number line](https://www.careercup.com/question?id=6229105402970112),[Grid walking](https://www.hackerrank.com/challenges/grid-walking/problem)
 6)[Closest pair of points](https://www.youtube.com/watch?v=0W_m46Q4qMc)
 7)[Design Search Autocompleted](https://leetcode.com/problems/design-search-autocomplete-system/)
+8)[DP optimization](https://codeforces.com/blog/entry/8219)
