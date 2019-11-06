@@ -10,6 +10,7 @@ string tos(vector<string> a){
 
 vector<string> tovs(string s){
     vector<string> t;
+	if(!s.size()) return t;
     for (size_t i = 0; i < s.size(); i++)
     {
         t.push_back(s.substr(i,1));
@@ -56,7 +57,11 @@ vector<string> getShrunkArray(vector<string> vs, int k) {
 		}
 		
 	}
-	while(!C.empty()) t += C.top(),C.pop();
+	bool areAllCharEqualAndMoreThanK = true;
+	t += C.top(),C.pop();
+	char c;
+	while(!C.empty()) t += (c = C.top()),C.pop(), areAllCharEqualAndMoreThanK &= (c == t[t.size()-1]);
+	if(areAllCharEqualAndMoreThanK && t.size() >= k) return tovs("");
 	rev(t);
 	return tovs(t);
 }
@@ -68,7 +73,7 @@ int main(){
 	{
 		str.push_back(s.substr(i,1));
 	}
-	res = getShrunkArray(str,2);
+	res = getShrunkArray(str,7);
 	for(auto it : res){
 		cout << it << "  ";
 	}
