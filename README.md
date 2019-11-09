@@ -16,4 +16,7 @@
 
 8)[DP optimization](https://codeforces.com/blog/entry/8219)
 
-9)[Range update with BIT](https://kartikkukreja.wordpress.com/2013/12/02/range-updates-with-bit-fenwick-tree/)
+9) [Fenwick tree](https://www.hackerearth.com/practice/notes/binary-indexed-tree-or-fenwick-tree/)
+
+10)[Range update with BIT](https://kartikkukreja.wordpress.com/2013/12/02/range-updates-with-bit-fenwick-tree/)
+
