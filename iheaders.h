@@ -16,6 +16,6 @@ void show(int x){
     for(int i = 0; i < 32; ++i) {bit[i] = (x&1); x>>=1;}
     for (size_t i = 0; i < 32; i++)
     {
-        cout << bit[32-i] << " ";
+        cout << bit[32-i] << "  ";
     }
 }
