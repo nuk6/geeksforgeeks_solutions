@@ -20,5 +20,3 @@
 
 10)[Range update with BIT](https://kartikkukreja.wordpress.com/2013/12/02/range-updates-with-bit-fenwick-tree/)
 
-11) []()
-
