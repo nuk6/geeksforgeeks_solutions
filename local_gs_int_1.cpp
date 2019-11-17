@@ -13,17 +13,19 @@ template<typename K,typename V>
 struct HashMap{
     const int size;
     Node<K,V>** arr;
-    HashMap() = default;
-    HashMap(const int size) : size(size){
+    //HashMap() = default;
+    HashMap(const int size = 10) : size(size){
         arr = new Node<K,V>*[size];
         for(int i = 0; i < size; ++i) arr[i] = nullptr;
-        //for(int i = 0; i < size; ++i) cout << arr[i] << endl;
     }
     int getSlot(K key);
     void insert(Node<K,V>* data);
     V get(K key);
     void remove(K key);
     void print();
+    V operator[](K key){
+        return get(key);
+    }
 };
 
 template<typename K, typename V>
@@ -39,7 +41,7 @@ void HashMap<K,V>::insert(Node<K,V>* data){
     Node<K,V>* ptr = arr[slot];
     //arr[slot] = new Node()
     if(!ptr){
-        cout << "here\n";
+        cout << "INSERT\n";
         arr[slot] = new Node<K,V>(data->key,data->value);
         return;
     }
@@ -64,7 +66,7 @@ V HashMap<K,V>::get(K key){
         ptr = ptr->next;
     }
     cout << "Not found\n";
-    return nullptr;
+    return *(new V());
 }
 
 template<typename K, typename V>
@@ -96,13 +98,14 @@ int main(){
     hm1->insert(new Node<int,string>(1,"CChef"));
     hm1->insert(new Node<int,string>(9,"Goldman"));
     hm1->insert(new Node<int,string>(1,"Nidhi"));
+    cout << (*hm1)[9] << endl;
     hm1->print();
     return 0;
 }
 /*
 Output : 
-here
-here
+INSERT
+INSERT
 HashMap : 
 | 0 | 
 | 1 | 
@@ -112,9 +115,10 @@ HashMap :
 | 5 | 
 | 6 | 
 1
-here
-here
-here
+INSERT
+INSERT
+INSERT
+Goldman
 HashMap : 
 | 0 | 
 | 1 | 1 - Nidhi --> 9 - Goldman --> 
