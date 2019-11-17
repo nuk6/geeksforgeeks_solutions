@@ -1,8 +1,4 @@
 #include "iheaders.h"
-template<typename K>
-int getHash(K k,const int size){
-    return (k%size);
-}
 
 template<typename K,typename V>
 struct Node{
@@ -12,44 +8,120 @@ struct Node{
     Node(K key, V value): key(key), value(value), next(nullptr){}
 };
 
-template<typename K, typename V, int size>
+template<typename K,typename V>
 struct HashMap{
-    Node<K,V>* arr[size];
-    HashMap(){
-        for (size_t i = 0; i < size; i++)
-        {
-            arr[i] = nullptr;
-        }
+    const int size;
+    Node<K,V>** arr;
+    HashMap() = default;
+    HashMap(const int size) : size(size){
+        arr = new Node<K,V>*[size];
+        for(int i = 0; i < size; ++i) arr[i] = nullptr;
+        //for(int i = 0; i < size; ++i) cout << arr[i] << endl;
     }
+    int getSlot(K key);
     void insert(Node<K,V>* data);
     V get(K key);
-    void erase(K key);
+    void remove(K key);
+    void print();
 };
 
-template<typename K, typename V, int size>
-void HashMap<K,V,size>::insert(Node<K,V>* data){
-    int hash = getHash(data->key,size);
-    if(!arr[hash]){
-        arr[hash] = new Node<K,V>(data->key,data->value);
-    } else{
-       // cout << data->value << endl;
-        Node<K,V>* ptr = arr[hash];
-        while(ptr->next){
-            cout << ptr->value << endl;
-            ptr = ptr->next;
-        }
-        ptr->next = new Node<K,V>(data->key, data->value);
-        //arr[hash] = new Node<K,V>(data->key, data->value);
-    }
-    
+template<typename K, typename V>
+int HashMap<K,V>::getSlot(K key){
+    //cout << "Slot "<< key%size << endl;
+    return key%size;
 }
 
+template<typename K,typename V>
+void HashMap<K,V>::insert(Node<K,V>* data){
+    K key = data->key;
+    int slot = getSlot(key);
+    Node<K,V>* ptr = arr[slot];
+    //arr[slot] = new Node()
+    if(!ptr){
+        cout << "here\n";
+        arr[slot] = new Node<K,V>(data->key,data->value);
+        return;
+    }
+    while(ptr){
+        if(ptr->key == key) {ptr->value = data->value; return;}
+        if(!ptr->next){
+            ptr->next = new Node<K,V>(data->key,data->value);
+            return;
+        }
+        ptr = ptr->next;
+    }
+}
+
+template<typename K,typename V>
+V HashMap<K,V>::get(K key){
+    int slot = getSlot(key);
+    Node<K,V>* ptr = arr[slot];
+    while(ptr){
+        if(ptr->key == key){
+            return ptr->value;
+        }
+        ptr = ptr->next;
+    }
+    cout << "Not found\n";
+    return nullptr;
+}
+
+template<typename K, typename V>
+void HashMap<K,V>::print(){
+    cout << "HashMap : \n";
+    for(int i = 0;i < size; ++i){
+        Node<K,V>* ptr = arr[i];
+        cout << "| "<<i<<" | ";
+        while(ptr){
+            cout << ptr->key << " - " << ptr->value << " --> ";
+            ptr = ptr->next;
+        } cout << endl;
+    }
+}
+
+
 int main(){
-    HashMap<int,string,4>* myMap = new HashMap<int,string,4>();
-    myMap->insert(new Node<int,string>(1,"Nidhi"));
-    myMap->insert(new Node<int,string>(1,"Vinay"));
-    if(myMap->arr[1]) cout << myMap->arr[1]->value << endl;
-    if(myMap->arr[1]->next) cout << myMap->arr[1]->next->value << endl;
-    //cout << getHash<string>("NIdhi") << endl;
+    Node<int,string>* n1 = new Node<int,string>(1,"Nidhi");
+    //cout << n1->value << endl;
+    HashMap<int,bool>* hm = new HashMap<int,bool>(7);
+    hm->insert(new Node<int,bool>(3,true));
+    hm->insert(new Node<int,bool>(2,false));
+    hm->print();
+    cout << hm->get(3) << endl;
+    HashMap<int,string>* hm1 = new HashMap<int,string>(8);
+    hm1->insert(new Node<int,string>(1,"Nidhi"));
+    hm1->insert(new Node<int,string>(2,"Vinay"));
+    hm1->insert(new Node<int,string>(3,"Codeforces"));
+    hm1->insert(new Node<int,string>(1,"CChef"));
+    hm1->insert(new Node<int,string>(9,"Goldman"));
+    hm1->insert(new Node<int,string>(1,"Nidhi"));
+    hm1->print();
     return 0;
 }
+/*
+Output : 
+here
+here
+HashMap : 
+| 0 | 
+| 1 | 
+| 2 | 2 - 0 --> 
+| 3 | 3 - 1 --> 
+| 4 | 
+| 5 | 
+| 6 | 
+1
+here
+here
+here
+HashMap : 
+| 0 | 
+| 1 | 1 - Nidhi --> 9 - Goldman --> 
+| 2 | 2 - Vinay --> 
+| 3 | 3 - Codeforces --> 
+| 4 | 
+| 5 | 
+| 6 | 
+| 7 |
+*/
+
