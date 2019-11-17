@@ -1,4 +1,5 @@
-#include "iheaders.h"
+#include "bits/stdc++.h"
+using namespace std;
 
 template<typename K,typename V>
 struct Node{
