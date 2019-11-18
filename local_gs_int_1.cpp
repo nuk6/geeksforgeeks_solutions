@@ -42,13 +42,13 @@ void HashMap<K,V>::insert(Node<K,V>* data){
     //arr[slot] = new Node()
     if(!ptr){
         cout << "INSERT\n";
-        arr[slot] = new Node<K,V>(data->key,data->value);
+        arr[slot] = data;
         return;
     }
     while(ptr){
         if(ptr->key == key) {ptr->value = data->value; return;}
         if(!ptr->next){
-            ptr->next = new Node<K,V>(data->key,data->value);
+            ptr->next = data;
             return;
         }
         ptr = ptr->next;
