@@ -1,0 +1,26 @@
+// P : https://leetcode.com/problems/keys-and-rooms/
+class Solution {
+public:
+    bool canVisitAllRooms(vector<vector<int>>& r) {
+        vector<int> curr = r[0];
+        unordered_map<int, bool> vis;
+        int top, n = r.size(), ans = true;
+        if(!curr.size()) return 0;
+        queue<int> q;
+        for(auto it : curr) {
+            q.push(it);
+            //vis[it] = true;
+        }
+        while(!q.empty()) {
+            top = q.front(); q.pop();
+            vis[top] = true;
+            for(auto it: r[top]) {
+                if(!vis[it]) {
+                    q.push(it);
+                }
+            }
+        }
+        for(int i = 1;i < n; ++i) ans &= vis[i];
+        return ans;
+    }
+};
